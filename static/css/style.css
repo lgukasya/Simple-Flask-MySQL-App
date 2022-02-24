@@ -1,0 +1,24 @@
+body {
+  background-color: #F7B801;
+}
+
+.spinner, #comunitats, #provincies, #municipis {
+  display: none;
+}
+
+#app{
+  height: 700px;
+}
+
+#table{
+  height: 400px;
+  overflow: auto;
+}
+
+td{
+  vertical-align: middle;
+}
+
+table{
+  text-align: center;
+}
