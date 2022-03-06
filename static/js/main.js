@@ -34,19 +34,19 @@ function get(s, is_list) {
     }
   };
   
-  xhttp.open("GET", `/app/${url.join('/')}`, true);
+  xhttp.open("GET", `http://localhost:3000/app/${url.join('/')}`, true);
   xhttp.send();
 }
 
 function loadData(resp, s, is_list){
 
   var data = JSON.parse(resp);
-
+  console.log(data);
+  
   if(is_list){
     var tr, td1, td2, td3, td4, a;
 
     tbody.innerHTML = '';
-
     data.forEach((x, i) => {
       tr = document.createElement('tr');
       td1 = document.createElement('td');
@@ -56,10 +56,10 @@ function loadData(resp, s, is_list){
       a = document.createElement('a');
 
       td1.innerHTML = i;
-      td2.innerHTML = x;
-      td4.innerHTML = getIframe(x.toString().replace(/ /g,"_"));
+      td2.innerHTML = x.municipi;
+      td4.innerHTML = getIframe(x.municipi.toString().replace(/ /g,"_"));
 
-      a.href = `https://ca.wikipedia.org/wiki/${x.toString().replace(/ /g,"_")}`;
+      a.href = `https://ca.wikipedia.org/wiki/${x.municipi.toString().replace(/ /g,"_")}`;
       a.innerHTML = "Viquipedia";
 
       td3.appendChild(a);
@@ -86,8 +86,8 @@ function loadData(resp, s, is_list){
   
   for(var x in data){
     option = document.createElement('option');
-    option.innerHTML = data[x];
-    option.value = data[x];
+    option.innerHTML = data[x].comunitat || data[x].provincia;
+    option.value = data[x].comunitat || data[x].provincia;
     s.appendChild(option);
   }
   

@@ -11,7 +11,7 @@ def home():
 @app.route('/app/', methods=['GET'])
 @app.route('/app/<string:c>')
 @app.route('/app/<string:c>/<string:p>')
-async def api(c=None, p=None):
+def api(c=None, p=None):
     sleep(1)
     
     cursor = mysql.connection.cursor()  
